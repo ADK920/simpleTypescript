@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { ReportConfig } from '../types';
-import { Function } from '@babel/types';
+import { ReportConfig } from '../../types';
 
 type ReportProps = {
     reports: ReportConfig[];

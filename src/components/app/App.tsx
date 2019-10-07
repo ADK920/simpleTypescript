@@ -2,7 +2,7 @@ import React, { useState, FunctionComponent } from 'react';
 import './App.css';
 import { Sidebar } from '../sidebar/Sidebar';
 import { Report } from '../report/Report';
-import { ReportConfig } from '../types';
+import { ReportConfig } from '../../types';
 
 const App: FunctionComponent = () => {
 

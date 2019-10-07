@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import { ReportConfig } from '../types';
+import { ReportConfig } from '../../types';
 import './Sidebar.css';
 
 type SidebarProps = {
