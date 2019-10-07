@@ -1,0 +1,13 @@
+.sidebar {
+    border-right: 1pt solid black;
+}
+
+.report-item {
+    display: flex;
+    cursor: pointer;
+}
+
+.report-item:hover {
+    background-color: black;
+    color: white;
+}
