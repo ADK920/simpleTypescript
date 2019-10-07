@@ -1,0 +1,13 @@
+.reporting {
+  display: flex;
+  flex:1;
+  padding: 20px;
+}
+
+.reporting .sidebar {
+  flex: 1;
+}
+
+.reporting .report {
+  flex: 3;
+}
