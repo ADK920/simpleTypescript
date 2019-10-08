@@ -15,12 +15,20 @@ const App: FunctionComponent = () => {
     setReports(newReports);
   };
 
+  const handleReportSelection = (selectedReport: ReportConfig) => {
+    if (!report || (report && report.title !== selectedReport.title)) {
+      setReport(selectedReport);
+    } else {
+      setReport(null);
+    }
+  }
+
   return (
     <div className="reporting">
       <Sidebar
         reports={reports}
         handleNewReport={(report: ReportConfig) => addReport(report)}
-        handleReportSelection={(selectedReport: ReportConfig) => setReport(selectedReport)}>
+        handleReportSelection={(selectedReport: ReportConfig) => handleReportSelection(selectedReport)}>
       </Sidebar>
       <Report report={report} reports={reports}></Report>
     </div>
