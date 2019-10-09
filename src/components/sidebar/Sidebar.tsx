@@ -31,7 +31,7 @@ export const Sidebar: FunctionComponent<SidebarProps> = (props: SidebarProps) =>
                 <button onClick={() => handleAddReport()}>Add Report</button>
             </div>
             {props.reports.map((report: ReportConfig, index: number) => {
-                return <div className='report-item' key={index} onClick={()=>props.handleReportSelection(report)}>{report.title}</div>
+                return <div className='report-item' key={index} onClick={()=>props.handleReportSelection(report, index)}>{report.title}</div>
             })}
         </div>
     );
