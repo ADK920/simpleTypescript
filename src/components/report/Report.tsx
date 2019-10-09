@@ -27,7 +27,7 @@ export const Report: FunctionComponent<ReportProps> = (props: ReportProps) => {
         }
         setMode(modes[mode]);
     }
-    const editor = props.report ? (<button onClick={handleSetMode}>{modes[mode]}</button>) : '';
+    const editor = props.report ? (<button onClick={handleSetMode}>{modes[mode]} Content</button>) : '';
     const header = <div className='report-header'>
         <div>
             <h5>{props.report ? `Selected: ${props.report.title}` : 'No Report Selected'}</h5>

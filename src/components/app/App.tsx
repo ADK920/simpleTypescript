@@ -8,6 +8,7 @@ const App: FunctionComponent = () => {
 
   const [reports, setReports] = useState<ReportConfig[]>([]);
   const [report, setReport] = useState();
+  const [index, setIndex] = useState<number>(-1);
 
   const addReport = (newReport: ReportConfig) => {
     const newReports: ReportConfig[] = [...reports];
@@ -15,12 +16,21 @@ const App: FunctionComponent = () => {
     setReports(newReports);
   };
 
-  const handleReportSelection = (selectedReport: ReportConfig) => {
-    if (!report || (report && report.title !== selectedReport.title)) {
+  const handleReportSelection = (selectedReport: ReportConfig, selectedIndex: number) => {
+    if (!report || selectedIndex !== index) {
       setReport(selectedReport);
+      setIndex(selectedIndex);
     } else {
       setReport(null);
+      setIndex(-1);
     }
+  }
+
+  const handleEdit = (editedReport: ReportConfig) => {
+    const newReports = [...reports];
+    newReports[index] = { ...editedReport };
+    setReports(newReports);
+    setReport({ ...editedReport })
   }
 
   return (
@@ -28,9 +38,14 @@ const App: FunctionComponent = () => {
       <Sidebar
         reports={reports}
         handleNewReport={(report: ReportConfig) => addReport(report)}
-        handleReportSelection={(selectedReport: ReportConfig) => handleReportSelection(selectedReport)}>
+        handleReportSelection={handleReportSelection}>
       </Sidebar>
-      <Report report={report} reports={reports}></Report>
+      <Report
+        handleReportEdit={handleEdit}
+        report={report}
+        reports={reports}>
+
+      </Report>
     </div>
   );
 }
