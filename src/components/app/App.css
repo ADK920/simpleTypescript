@@ -15,3 +15,14 @@
   flex-direction: column;
   padding-left: 20px;
 }
+
+.reporting .report .report-content {
+  padding: 10px;
+  display: flex;
+  flex: 1;
+}
+
+.selected-true {
+  font-weight:bold;
+  text-decoration: underline;
+}

@@ -4,6 +4,7 @@ import { ReportConfig } from '../../types';
 type ReportProps = {
     reports: ReportConfig[];
     report: ReportConfig;
+    selectedIndex: number;
     handleReportEdit: Function;
 }
 
@@ -13,6 +14,7 @@ export const Report: FunctionComponent<ReportProps> = (props: ReportProps) => {
         'save': 'edit'
     };
     const report = { ...props.report };
+    const selectedIndex = props.selectedIndex;
     const [mode, setMode] = useState<string>('save');
     const [content, setContent] = useState<string>(report.content || '');
 
@@ -34,23 +36,26 @@ export const Report: FunctionComponent<ReportProps> = (props: ReportProps) => {
             {editor}
         </div>
     </div>;
-    const editContent = (<div>
+    const editContent = (
         <textarea
+            className="report-text-editor"
             name="reportContent"
             value={content}
             onChange={(e) => setContent(e.target.value)}
             placeholder="Edit the report content here"
             cols={30}
             rows={10}></textarea>
-    </div>);
-    const displayContent = (<div>
-        {props.report ? props.report.content : ''}
-    </div>);
+    );
+    const blankContent = 'This report is blank. Click Edit Content to update.';
+    const reportContent = props.report && props.report.content && props.report.content !== '' ? props.report.content : blankContent;
+    const displayContent = selectedIndex === -1 ? 'Please select or add a report.' : reportContent;
 
     return (
         <div className='report'>
             {header}
-            {mode === 'edit' ? editContent : displayContent}
+            <div className='report-content'>
+                {mode === 'edit' ? editContent : displayContent}
+            </div>
         </div>
     )
 }

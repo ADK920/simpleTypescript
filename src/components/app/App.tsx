@@ -37,14 +37,15 @@ const App: FunctionComponent = () => {
     <div className="reporting">
       <Sidebar
         reports={reports}
+        selectedIndex={index}
         handleNewReport={(report: ReportConfig) => addReport(report)}
         handleReportSelection={handleReportSelection}>
       </Sidebar>
       <Report
         handleReportEdit={handleEdit}
         report={report}
-        reports={reports}>
-
+        reports={reports}
+        selectedIndex={index}>
       </Report>
     </div>
   );
